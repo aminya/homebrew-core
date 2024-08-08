@@ -3,8 +3,8 @@ class DotnetAT6 < Formula
   homepage "https://dotnet.microsoft.com/"
   # Source-build tag announced at https://github.com/dotnet/source-build/discussions
   url "https://github.com/dotnet/installer.git",
-      tag:      "v6.0.125",
-      revision: "e898a826c2b7f66602c8962134ef165fb9e6d44b"
+      tag:      "v6.0.132",
+      revision: "b1806f3a38b61b34fb53e175efce615f223718e9"
   license "MIT"
 
   bottle do
@@ -26,6 +26,11 @@ class DotnetAT6 < Formula
   uses_from_macos "llvm" => :build
   uses_from_macos "krb5"
   uses_from_macos "zlib"
+
+  on_ventura do
+    depends_on "llvm" => :build
+    fails_with :clang
+  end
 
   on_linux do
     depends_on "libunwind"
